@@ -2,6 +2,7 @@ global using Estudos.Models;
 global using Estudos.Services.CharacterService;
 global using Estudos.Dtos;
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.DependencyInjection;
 global using Estudos.Data;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.IdentityModel.Tokens;
@@ -33,6 +34,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 
     builder.Services.AddHttpContextAccessor();
+
     c.OperationFilter<SecurityRequirementsOperationFilter>();
 });
 builder.Services.AddScoped<ICharacterService, CharacterService>();
@@ -48,6 +50,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateAudience = false
     };
 });
+
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
