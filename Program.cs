@@ -38,18 +38,7 @@ builder.Services.AddSwaggerGen(c =>
     c.OperationFilter<SecurityRequirementsOperationFilter>();
 });
 builder.Services.AddScoped<ICharacterService, CharacterService>();
-builder.Services.AddScoped<IAuthRepository, AuthRepository>();
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8
-        .GetBytes(builder.Configuration.GetSection("appSettings:Token").Value)),
-        ValidateIssuer = false,
-        ValidateAudience = false
-    };
-});
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
