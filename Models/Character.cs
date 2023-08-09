@@ -18,5 +18,7 @@ namespace Estudos.Models
 
         public Rpgclass Class { get; set; } = Rpgclass.Knight;
 
+        public User? user { get; set; }
+
     }
 }

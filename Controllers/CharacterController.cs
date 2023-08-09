@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Estudos.Controllers
 {
 
+    [Authorize]
     [ApiController]
     [Route("Characters")]
     public class CharacterController : ControllerBase
@@ -16,9 +18,11 @@ namespace Estudos.Controllers
             _characterService = characterService;
         }
 
+     
         [HttpGet("GetAll")]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> Get()
         {
+
             return Ok(await _characterService.GetAllCharacters());
         }
 
