@@ -11,7 +11,9 @@ namespace Estudos.Data
         }
 
         public DbSet<Character> Characters => Set<Character>();
-    
+
+        public DbSet<User> users => Set<User>();
+
     }
     
 }
